@@ -1,5 +1,5 @@
-
-
+from file_operations import FileOperations
+from chat_operations import ChatOperations
 
 
 # Displays Main menu choices
@@ -18,7 +18,8 @@ def main():
     choice = input("> ").lower()
     while True:
         if choice == "1":
-            print('1')
+            chat = ChatOperations()
+            chat.start_chart()
             break
         elif choice == "2":
             print("2")

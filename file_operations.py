@@ -57,6 +57,17 @@ class FileOperations:
                 print(f'File name: {file_name}')
                 print('\n')
                 
+    def get_chat(self, id):
+        with open(self.records, "r") as f:
+            temp = json.load(f)
+        [open_list] = temp
+        if id in open_list:
+            print('id exists')
+            chat_file = open_list[id]['file_name']
+            return chat_file
+        else:
+            print('id does not exist')
+            quit()
         
     
         

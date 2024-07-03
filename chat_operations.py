@@ -18,7 +18,7 @@ Message CLI Chatter
     """)
         max_length = 50
         while True:
-            prompt = input("> ")
+            prompt = input(">> ")
             self.prompt = prompt
             if not prompt:
                 print('You have not entered anything. Please enter a prompt')
@@ -73,7 +73,41 @@ Message CLI Chatter
             
     def existing_chat(self):
         file = FileOperations()
+        print('Enter Chat ID: \n')
         file.search_all_chats()
+        id = input(">> ")
+        chat_file = file.get_chat(id)
+        
+        chat = ChatOpenAI()
+        
+        memory = ConversationBufferMemory(
+            chat_memory=FileChatMessageHistory(chat_file),
+            memory_key="messages", 
+            return_messages=True
+        )
+        
+        prompt = ChatPromptTemplate(
+            input_variables=["content", "messages"],
+            messages=[
+                MessagesPlaceholder(variable_name="messages"),
+                HumanMessagePromptTemplate.from_template("{content}")
+            ]
+        )
+        
+        chain = LLMChain(
+            llm=chat,
+            prompt=prompt,
+            memory=memory,
+        )
+        
+        while True:
+            content = input(">> ")
+            
+            result = chain({'content': content})
+            
+            print(result['text'])
+        
+    
 
     
     

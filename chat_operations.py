@@ -70,6 +70,10 @@ Message CLI Chatter
             result = chain({'content': content})
             
             print(result['text'])
+            
+    def existing_chat(self):
+        file = FileOperations()
+        file.search_all_chats()
 
     
     

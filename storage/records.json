@@ -1,1 +1,12 @@
-[]
+[
+    {
+        "c1": {
+            "prompt": "What is 1+1?",
+            "file_name": "storage/c1.json"
+        },
+        "c2": {
+            "prompt": "what is 3+3?",
+            "file_name": "storage/c2.json"
+        }
+    }
+]

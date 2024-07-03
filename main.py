@@ -22,7 +22,8 @@ def main():
             chat.start_chart()
             break
         elif choice == "2":
-            print("2")
+            chat = ChatOperations()
+            chat.existing_chat()
             break
         elif choice == "3":
             print("3")

@@ -41,6 +41,22 @@ class FileOperations:
         with open(self.records, "w") as f:
             json.dump(temp, f, indent=4)
         return item_data['file_name']
+    
+    def search_all_chats(self):
+        with open(self.records, 'r') as f:
+            temp = json.load(f)
+        if not temp:
+            print("No chats have been added")
+        else:
+            [open_list] = temp
+            for chat_id in open_list:
+                prompt = open_list[chat_id]["prompt"]
+                file_name = open_list[chat_id]["file_name"]
+                print(f'Chat ID: {chat_id}')
+                print(f'Prompt: {prompt}')
+                print(f'File name: {file_name}')
+                print('\n')
+                
         
     
         
